@@ -30,13 +30,14 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenLessDistanceAndTimeShouldReturnTotleFare(){
+    public void givenLessDistanceAndTimeShouldReurnInvoiceSummery(){
         Ride[] rides = {
                 new Ride(2.0, 5),
                 new Ride(0.1, 5)
         };
-        double fare = invoiceGenerator.calculateFare(rides);
-        Assert.assertEquals(31,fare,0.0);
+        InvoiceSummary summary = invoiceGenerator.calculateFare(rides);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2,31);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
 
     }
 }

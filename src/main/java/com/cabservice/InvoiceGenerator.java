@@ -1,7 +1,5 @@
 package com.cabservice;
 
-import java.io.FileInputStream;
-
 public class InvoiceGenerator {
     final int THE_DISTANCE_OF_EACH_KM = 10;
     final int PER_MINUTE_TIME = 1;
@@ -12,11 +10,11 @@ public class InvoiceGenerator {
 
         return totalMinimumFare < MINUMUM_FARE ? MINUMUM_FARE : totalMinimumFare;
     }
-    public double calculateFare(Ride [] rides){
+    public InvoiceSummary calculateFare(Ride [] rides){
         double totalFare = 0;
         for(Ride ride : rides){
             totalFare += this.calculateFare(ride.distance, ride.time);
         }
-        return totalFare;
+        return new InvoiceSummary(rides.length, totalFare);
     }
 }
